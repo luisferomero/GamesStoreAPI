@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GamesStoreAPI.CrossCutting
+namespace GamesStoreAPI.Entities
 {
     public class Class1
     {
