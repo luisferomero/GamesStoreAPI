@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GamesStoreAPI.Entities.Entities
+namespace GamesStoreAPI.BusinessLogic.DTO
 {
-    public class Developer
+    public class DeveloperDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Game> Games { get; set; }
+        public ICollection<GameDto> Games { get; set; }
     }
 }

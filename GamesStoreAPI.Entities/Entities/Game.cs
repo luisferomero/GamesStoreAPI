@@ -14,7 +14,6 @@ namespace GamesStoreAPI.Entities.Entities
 
         public Developer Developer { get; set; }
         public AgeRestriction AgeRestriction { get; set; }
-        public ICollection<Categorie> Categories { get; set; }
-
+        public ICollection<Category> Categories { get; set; }
     }
 }
