@@ -14,7 +14,7 @@ namespace GamesStoreAPI.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Creating many to many relationship with composite key
-            modelBuilder.Entity<GameCategory>().HasKey(sc => new { sc.CategoryId, sc.GameId });
+            modelBuilder.Entity<GameCategory>().HasKey(gc => new { gc.CategoryId, gc.GameId });
         }
 
         public DbSet<AgeRestriction> AgeRestrictions { get; set; }
