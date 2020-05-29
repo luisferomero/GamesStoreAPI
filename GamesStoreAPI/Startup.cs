@@ -28,8 +28,8 @@ namespace GamesStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<GameStoreContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(""))
+            services.AddDbContext<GamesStoreContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("Local"))
             );
         }
 

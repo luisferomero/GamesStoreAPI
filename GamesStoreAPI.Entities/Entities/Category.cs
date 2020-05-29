@@ -8,6 +8,6 @@ namespace GamesStoreAPI.Entities.Entities
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Game> Games { get; set; }
+        public ICollection<GameCategory> GamesCategories { get; set; }
     }
 }

@@ -12,8 +12,8 @@ namespace GamesStoreAPI.Entities.Entities
         public string CoverImg { get; set; }
         public double Rating { get; set; }
 
-        public Developer Developer { get; set; }
         public AgeRestriction AgeRestriction { get; set; }
-        public ICollection<Category> Categories { get; set; }
+        public Developer Developer { get; set; }
+        public ICollection<GameCategory> GamesCategories { get; set; }
     }
 }
