@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using GamesStoreAPI.Data.Contexts;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
@@ -34,14 +37,16 @@ namespace GamesStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             //Not recomended. Only using OData (pre release)
-            services.AddControllers(mvcOptions =>
-                mvcOptions.EnableEndpointRouting = false);
+            //services.AddControllers(mvcOptions =>
+            //    mvcOptions.EnableEndpointRouting = false);
 
-            //services.AddControllers();
+            services.AddControllers();
 
             services.AddDbContext<GamesStoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Local"))
             );
+
+            services.AddAutoMapper(typeof(Startup));
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -63,6 +68,11 @@ namespace GamesStoreAPI
                         Url = new Uri("https://opensource.org/licenses/MIT"),
                     }
                 });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.AddOData();
@@ -108,16 +118,16 @@ namespace GamesStoreAPI
             app.UseAuthorization();
 
             //Not recomended. Only if using Odata (pre release)
-            app.UseMvc(routeBuilder =>
-            {
-                routeBuilder.Select().Filter();
-                routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
-            });
-
-            //app.UseEndpoints(endpoints =>
+            //app.UseMvc(routeBuilder =>
             //{
-            //    endpoints.MapControllers();
+            //    routeBuilder.Select().Filter();
+            //    routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             //});
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
 
         IEdmModel GetEdmModel()

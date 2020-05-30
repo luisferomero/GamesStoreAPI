@@ -8,4 +8,12 @@
     <Folder Include="DTO\" />
     <Folder Include="Mappers\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GamesStoreAPI.Entities\GamesStoreAPI.Entities.csproj" />
+    <ProjectReference Include="..\GamesStoreAPI.Data\GamesStoreAPI.Data.csproj" />
+  </ItemGroup>
 </Project>
