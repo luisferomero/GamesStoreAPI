@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using GamesStoreAPI.BusinessLogic.DTO;
 using GamesStoreAPI.BusinessLogic.Services.Interfaces;
 using GamesStoreAPI.Data.Contexts;
 using GamesStoreAPI.Entities.Entities;
@@ -16,9 +18,9 @@ namespace GamesStoreAPI.BusinessLogic.Services
             Context = context;
         }
 
-        public Task<List<Developer>> GetDevelopersListAsync()
+        public async Task<List<Developer>> GetDevelopersListAsync()
         {
-            return Context.Developers.ToListAsync();
+            return await Context.Developers.ToListAsync();
         }
     }
 }
